@@ -1,10 +1,15 @@
 const chatForm = document.getElementById("chat-form");
+const chatDiv = document.querySelector(".chat-messages");
+
 const socket = io();
 
 // Message from server:
 socket.on("message", message => {
     console.log(`Msg: ${message}`);
     outputMsg(message);
+
+    // Auto-scroll down:
+    chatDiv.scrollTop = chatDiv.scrollHeight;
 });
 
 // Message submit:
@@ -18,16 +23,19 @@ chatForm.addEventListener("submit", (event) => {
     
     // Emit message to server:
     socket.emit("chatMessage", msg);
+
+    // Clear input field:
+    event.target.elements.msg.value = "";
+    event.target.elements.msg.focus();
 });
 
 // Output message to DOM:
 function outputMsg (message) {
     const newDiv = document.createElement("div");
     newDiv.classList.add("message");
-    newDiv.innerHTML = `<p class="meta">clientName <span>12:00pm</span></p>
+    newDiv.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
     <p class="text">
-        ${message}
+        ${message.text}
     </p>`;
-    const chatDiv = document.querySelector(".chat-messages")
     chatDiv.appendChild(newDiv);
 };
