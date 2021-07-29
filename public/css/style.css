@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-    --dark-color-a: #667aff;
-    --dark-color-b: #7386ff;
-    --light-color: #e6e9ff;
+    --dark-color-a: #7e2414;
+    --dark-color-b: #ee341b;
+    --light-color: #929fa5c0;
     --success-color: #5cb85c;
     --error-color: #d9534f;
 }
@@ -19,6 +19,30 @@ body {
     font-size: 16px;
     background: var(--light-color);
     margin: 20px;
+    overflow-x: hidden;
+}
+
+body > #vid-back {
+    z-index: -10;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin: auto;
+    overflow: hidden;
+    /* background-image: url("../images/"); */
+}
+
+body > .overlay {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--light-color);
+    opacity: 0.75;
+    z-index: -1;
 }
 
 ul {
@@ -41,6 +65,7 @@ a {
 /* Chat Page */
 
 .chat-container {
+    z-index: 2;
     max-width: 1100px;
     background: #fff;
     margin: 30px auto;
@@ -128,6 +153,7 @@ a {
 
 /* Join Page */
 .join-container {
+    z-index: 2;
     max-width: 500px;
     margin: 80px auto;
     color: #fff;

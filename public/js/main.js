@@ -2,6 +2,11 @@ const chatForm = document.getElementById("chat-form");
 const chatDiv = document.querySelector(".chat-messages");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
+// const qs = require('qs');
+// const goFullscreen = document.querySelector(".fullscreen");
+
+
+// goFullscreen.addEventListener("click", () => document.documentElement.webkitRequestFullScreen());
 
 // Get username and room from URL (destructuring):
 const { username, room } = Qs.parse(location.search, {
